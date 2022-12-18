@@ -1,0 +1,172 @@
+body {
+  margin: 0;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  padding: 1em;
+  height: 4vh;
+}
+
+.bottom-nav {
+  background-color: #333;
+  overflow: hidden;
+  padding: 1em;
+  height: 6vh;
+  text-align: center;
+}
+
+/* Page title */
+.title {
+  color: aliceblue;
+  font-weight: normal;
+  font-family: 'Orienta', sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+
+}
+
+/* .control_center {
+  width: 100vw;
+
+} */
+
+._room {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  float: left;
+  width: 100%;
+  background-color: #aaa;
+  min-height: 15vh;
+}
+
+/* .join_room {
+  padding: 2em;
+  float: left;
+  background-color: aliceblue;
+  min-height: 15vh;
+
+}
+
+.join_room button {
+  margin-left: 2em;
+} */
+
+.logs {
+  padding: 2em;
+  font-size: medium;
+  position: absolute;
+  top: 40%;
+
+  text-align: center;
+  color: #222;
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
+  word-spacing: 1px;
+  letter-spacing: 2px;
+  color: #c50000;
+
+}
+
+
+/* <--Button css start*/
+button {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  box-shadow: none;
+  color: #363636;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  height: 3em;
+  justify-content: center;
+  line-height: 1.5;
+  border-radius: 5px;
+  margin-left: 2em;
+ }
+
+button:active {
+  border-color: #4a4a4a;
+  outline: 0;
+}
+
+button:focus {
+  border-color: #485fc7;
+  outline: 0;
+}
+
+button:hover {
+  border-color: #b5b5b5;
+  cursor: pointer;
+}
+
+button:focus:not(:active) {
+  box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+}
+
+.bottom-nav button {
+  margin-left: 0;
+}
+
+/* Button css end-> */
+
+/* <-input box css start */
+input[type=text] {
+  width: 35%;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  /* margin:8px 0; */
+  outline: none;
+  padding: 1em;
+  box-sizing: border-box;
+  transition: .3s;
+  margin-left: 2.3em;
+}
+
+input[type=text]:focus {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 8px 0 dodgerBlue;
+}
+
+/* input box css end-> */
+
+.video-app-container {
+  height: 85vh;
+  /* background-color: #4a4a4a; */
+}
+
+.local-video {
+  width: 49%;
+  left: 0;
+  border: 1px solid #4a4a4a;
+  /* padding: 2em; */
+  /* position: absolute; */
+  border: 1px solid green;
+  margin-top: 2em;
+}
+
+.remote-video {
+  width: 49%;
+  right: 0;
+  /* padding: 2em; */
+  position: absolute;
+  margin-top: 2em;
+  border: 1px solid red;
+}
+
+.remote_heading {
+  position: absolute;
+  top: 35%;
+  right: 0;
+  opacity: .5;
+}
+
+.local_heading {
+  top: 35%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  opacity: .5;
+}

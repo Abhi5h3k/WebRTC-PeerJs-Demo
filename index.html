@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WebRTC PeerJs</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <span class="title">WebRTC PeerJs</span>
+    </div>
+    <div class="control_center">
+        <div class="_room">
+            <input id="room-input" class="room-input" placeholder="Enter Room ID" type="text">
+            <br>
+            <br>
+            <button onclick="createRoom()">Create Room</button>
+            <button onclick="joinRoom()">Join Room</button>
+            <button onclick="joinRoomWithoutCamShareScreen()">Join Room and Directly share Screen</button>
+            
+
+        </div>
+
+        <div class="logs">
+            <p id="notification" hidden></p>
+        </div>
+
+        <div class="video-app-container">
+            <h1 class="local_heading">Local</h1>
+            <video height="400" id="local-video" class="local-video"></video>
+            <h1 class="remote_heading">Remote</h1>
+            <video height="400" id="remote-video" class="remote-video"></video>
+            
+        </div>
+    </div>
+    <button onclick="startScreenShare()">Screen Share</button>
+
+        
+
+</body>
+
+<!-- check https://peerjs.com/ for latest CDN-->
+<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+
+</html>
