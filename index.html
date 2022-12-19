@@ -1,48 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <title>WebRTC PeerJs</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>WebRTC PeerJs Demo</title>
 </head>
 
 <body>
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1" style="color: aliceblue;">WebRTC PeerJs Demo</span>
+        </div>
+    </nav>
+    <div class="container-fluid">
 
-    <div class="topnav">
-        <span class="title">WebRTC PeerJs</span>
+
+        <div class="row">
+            <div class="col-5 pt-5 ps-5 col-sm-7">
+                <label class="form-label">Enter Room ID to connect or create</label>
+                <input id="room-input" type="text" class="form-control" placeholder="room ID">
+                <br>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3" onclick="createRoom()">Create Room</button>
+                    <button type="submit" class="btn btn-primary mb-3" onclick="joinRoom()">Join Room</button>
+                    <button type="submit" class="btn btn-primary mb-3" onclick="joinRoomWithoutCamShareScreen()">Join
+                        Room and Share screen directly</button>
+                </div>
+            </div>
+            <div class="col-7 pt-5 ps-5 pe-5 col-sm-5">
+                <div class="alert alert-info alert-dismissible fade show mt-3" role="alert" id="notification" hidden>
+                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ps-5 pt-5" id="local-vid-container" hidden>
+                <div class="row">
+                    <!-- <div class="col-1">
+                        <div class="spinner-border text-warning" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div> -->
+                    <div class="col">
+                        <h2>Local Stream</h2>
+                    </div>
+
+                </div>
+                <div class="row p-3">
+                    <video height="300" id="local-video" class="local-video"></video>
+                </div>
+                <div class="row">
+                    <div class="col-3 col-sm-12"><button type="submit" class="btn btn-success mb-3" onclick="startScreenShare()">Share Screen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col ps-5 pt-5" id="remote-vid-container" hidden>
+                <div class="row">
+                    <!-- <div class="col-1">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div> -->
+                    <div class="col">
+                        <h2>Remote Stream</h2>
+                    </div>
+
+                </div>
+                <div class="row p-3">
+                    <video height="300" id="remote-video" class="remote-video"></video>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="control_center">
-        <div class="_room">
-            <input id="room-input" class="room-input" placeholder="Enter Room ID" type="text">
-            <br>
-            <br>
-            <button onclick="createRoom()">Create Room</button>
-            <button onclick="joinRoom()">Join Room</button>
-            <button onclick="joinRoomWithoutCamShareScreen()">Join Room and Directly share Screen</button>
-            
 
-        </div>
+    <!-- Optional JavaScript; choose one of the two! -->
 
-        <div class="logs">
-            <p id="notification" hidden></p>
-        </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
-        <div class="video-app-container">
-            <h1 class="local_heading">Local</h1>
-            <video height="400" id="local-video" class="local-video"></video>
-            <h1 class="remote_heading">Remote</h1>
-            <video height="400" id="remote-video" class="remote-video"></video>
-            
-        </div>
-    </div>
-    <button onclick="startScreenShare()">Screen Share</button>
 
-        
-
+    <!-- check https://peerjs.com/ for latest CDN-->
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="script.js"></script>
 </body>
-
-<!-- check https://peerjs.com/ for latest CDN-->
-<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
-<script src="script.js"></script>
 
 </html>

@@ -23,6 +23,7 @@ function createRoom() {
         }, (err) => {
             console.log(err)
         })
+        document.getElementById("local-vid-container").hidden = false;
         notify("Waiting for peer to join.")
     })
     peer.on('call', (call) => {
@@ -42,7 +43,7 @@ function setLocalStream(stream) {
     video.play();
 }
 function setRemoteStream(stream) {
-
+    document.getElementById("remote-vid-container").hidden = false;
     let video = document.getElementById("remote-video");
     video.srcObject = stream;
     video.play();
@@ -77,8 +78,10 @@ function joinRoom() {
             let call = peer.call(room_id, stream)
             call.on('stream', (stream) => {
                 setRemoteStream(stream);
+
             })
             currentPeer = call;
+            document.getElementById("local-vid-container").hidden = false;
         }, (err) => {
             console.log(err)
         })
