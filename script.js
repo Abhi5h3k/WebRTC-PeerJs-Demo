@@ -24,7 +24,6 @@ function createRoom() {
         }, (err) => {
             console.log(err)
         })
-        document.getElementById("local-vid-container").hidden = false;
         notify("Waiting for peer to join.")
     })
     peer.on('call', (call) => {
@@ -39,8 +38,15 @@ function createRoom() {
 }
 
 function setLocalStream(stream) {
-
+    document.getElementById("local-vid-container").hidden = false;
     let video = document.getElementById("local-video");
+    video.srcObject = stream;
+    video.muted = true;
+    video.play();
+}
+function setScreenSharingStream(stream) {
+    document.getElementById("screenshare-container").hidden = false;
+    let video = document.getElementById("screenshared-video");
     video.srcObject = stream;
     video.muted = true;
     video.play();
@@ -84,7 +90,6 @@ function joinRoom() {
 
             })
             currentPeer = call;
-            document.getElementById("local-vid-container").hidden = false;
         }, (err) => {
             console.log(err)
         })
@@ -131,6 +136,10 @@ function joinRoomWithoutCamShareScreen() {
 
         notify("Joining peer")
         let call = peer.call(room_id, createMediaStreamFake())
+        call.on('stream', (stream) => {
+            setRemoteStream(stream);
+
+        })
 
         currentPeer = call;
         startScreenShare();
@@ -175,6 +184,8 @@ function startScreenShare() {
         stopScreenSharing()
     }
     navigator.mediaDevices.getDisplayMedia({ video: true }).then((stream) => {
+        setScreenSharingStream(stream);
+
         screenStream = stream;
         let videoTrack = screenStream.getVideoTracks()[0];
         videoTrack.onended = () => {

@@ -47,11 +47,6 @@
         <div class="row">
             <div class="col ps-5 pt-5" id="local-vid-container" hidden>
                 <div class="row">
-                    <!-- <div class="col-1">
-                        <div class="spinner-border text-warning" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div> -->
                     <div class="col">
                         <h2>Local Stream</h2>
                     </div>
@@ -66,13 +61,24 @@
                     </div>
                 </div>
             </div>
+            <div class="col ps-5 pt-5" id="screenshare-container" hidden>
+                <div class="row">
+                    <div class="col">
+                        <h2>Screen Shared Stream</h2>
+                    </div>
+
+                </div>
+                <div class="row p-3">
+                    <video height="300" id="screenshared-video" controls class="local-video"></video>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-3 col-sm-12"><button type="submit" class="btn btn-success mb-3"
+                            onclick="startScreenShare()">Share Screen</button>
+                    </div>
+                </div> -->
+            </div>
             <div class="col ps-5 pt-5" id="remote-vid-container" hidden>
                 <div class="row">
-                    <!-- <div class="col-1">
-                        <div class="spinner-border text-success" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div> -->
                     <div class="col">
                         <h2>Remote Stream</h2>
                     </div>
@@ -90,8 +96,6 @@
                         <h2>Local video from media</h2>
                         <h6>On play stream to remote peer</h6>
                     </div>
-
-
                 </div>
                 <div class="row p-3">
                     <video height="300" id="local-media" controls muted loop
