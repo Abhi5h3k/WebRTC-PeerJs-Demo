@@ -12,6 +12,10 @@
 
  <br />
 
+## Display screen shared to remote on your window
+![image](https://user-images.githubusercontent.com/37928721/209775000-20d1a9f4-1225-4583-876d-85161b352bb7.png)
+ 
+
 ## Screen shared by remote
 ![image](https://user-images.githubusercontent.com/37928721/208362930-682653ea-e9b9-4341-b057-36f255e3aefe.png)
 
