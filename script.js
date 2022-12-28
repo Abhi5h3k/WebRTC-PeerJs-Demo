@@ -18,6 +18,7 @@ function createRoom() {
     peer.on('open', (id) => {
         console.log("Peer Room ID: ", id)
         getUserMedia({ video: true, audio: true }, (stream) => {
+            console.log(stream);
             local_stream = stream;
             setLocalStream(local_stream)
         }, (err) => {
@@ -29,6 +30,8 @@ function createRoom() {
     peer.on('call', (call) => {
         call.answer(local_stream);
         call.on('stream', (stream) => {
+            console.log("got call");
+            console.log(stream);
             setRemoteStream(stream)
         })
         currentPeer = call;
@@ -89,6 +92,7 @@ function joinRoom() {
     })
 }
 function joinRoomWithoutCamShareScreen() {
+    // join a call and drirectly share screen, without accesing camera
     console.log("Joining Room")
     let room = document.getElementById("room-input").value;
     if (room == " " || room == "") {
@@ -115,27 +119,54 @@ function joinRoomWithoutCamShareScreen() {
 
         const createEmptyVideoTrack = ({ width, height }) => {
             const canvas = Object.assign(document.createElement('canvas'), { width, height });
-            canvas.getContext('2d').fillRect(0, 0, width, height);
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = "green";
+            ctx.fillRect(0, 0, width, height);
 
             const stream = canvas.captureStream();
             const track = stream.getVideoTracks()[0];
 
             return Object.assign(track, { enabled: false });
         };
-        // getUserMedia({ video: true, audio: false }, (stream) => {
-        //     local_stream = stream;
-        // setLocalStream(local_stream)
+
         notify("Joining peer")
         let call = peer.call(room_id, createMediaStreamFake())
-        // call.on('stream', (stream) => {
-        //     setRemoteStream(stream);
-        // })
+
         currentPeer = call;
         startScreenShare();
-        // }, (err) => {
-        //     console.log(err)
-        // })
 
+    })
+}
+
+function joinRoomShareVideoAsStream() {
+    // Play video from local media
+    console.log("Joining Room")
+    let room = document.getElementById("room-input").value;
+    if (room == " " || room == "") {
+        alert("Please enter room number")
+        return;
+    }
+
+    room_id = room;
+    peer = new Peer()
+    peer.on('open', (id) => {
+        console.log("Connected with Id: " + id)
+
+        document.getElementById("local-mdeia-container").hidden = false;
+        
+        const video = document.getElementById('local-media');
+        video.onplay = function () {
+            const stream = video.captureStream();
+            notify("Joining peer")
+            let call = peer.call(room_id, stream)
+
+            // Show remote stream on my side
+            call.on('stream', (stream) => {
+                setRemoteStream(stream);
+
+            })
+        };
+        video.play();
     })
 }
 

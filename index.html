@@ -29,10 +29,12 @@
                 <input id="room-input" type="text" class="form-control" placeholder="room ID">
                 <br>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3" onclick="createRoom()">Create Room</button>
+                    <button type="submit" class="btn btn-secondary mb-3" onclick="createRoom()">Create Room</button>
                     <button type="submit" class="btn btn-primary mb-3" onclick="joinRoom()">Join Room</button>
-                    <button type="submit" class="btn btn-primary mb-3" onclick="joinRoomWithoutCamShareScreen()">Join
+                    <button type="submit" class="btn btn-success mb-3" onclick="joinRoomWithoutCamShareScreen()">Join
                         Room and Share screen directly</button>
+                    <button type="submit" class="btn btn-dark mb-3" onclick="joinRoomShareVideoAsStream()">Join
+                        Room and stream local media </button>
                 </div>
             </div>
             <div class="col-7 pt-5 ps-5 pe-5 col-sm-5">
@@ -56,10 +58,11 @@
 
                 </div>
                 <div class="row p-3">
-                    <video height="300" id="local-video" class="local-video"></video>
+                    <video height="300" id="local-video" controls class="local-video"></video>
                 </div>
                 <div class="row">
-                    <div class="col-3 col-sm-12"><button type="submit" class="btn btn-success mb-3" onclick="startScreenShare()">Share Screen</button>
+                    <div class="col-3 col-sm-12"><button type="submit" class="btn btn-success mb-3"
+                            onclick="startScreenShare()">Share Screen</button>
                     </div>
                 </div>
             </div>
@@ -76,7 +79,23 @@
 
                 </div>
                 <div class="row p-3">
-                    <video height="300" id="remote-video" class="remote-video"></video>
+                    <video height="300" id="remote-video" controls class="remote-video"></video>
+                </div>
+            </div>
+
+            <div class="col ps-5 pt-5" id="local-mdeia-container" hidden>
+                <div class="row">
+
+                    <div class="col">
+                        <h2>Local video from media</h2>
+                        <h6>On play stream to remote peer</h6>
+                    </div>
+
+
+                </div>
+                <div class="row p-3">
+                    <video height="300" id="local-media" controls muted loop
+                        src="/media/im.abhishekbhardwaj bharmour.mp4"></video>
                 </div>
             </div>
         </div>
